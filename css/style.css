@@ -35,6 +35,7 @@ main {
     margin: 0;
     flex-basis: 40%;
     position: relative;
+    visibility: hidden;
 }
 
 .robo {
