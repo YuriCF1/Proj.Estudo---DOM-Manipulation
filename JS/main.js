@@ -10,7 +10,7 @@ const robotron = document.querySelector('#robotron')
 //Forma Especifica
 //const braco = document.querySelector('#braco')
 
-//Forma Geral - Pegar a árvore
+//1--Forma Geral - Pegar a árvore
 const braco = document.querySelector('#braco')
 
 
@@ -52,7 +52,15 @@ dizOi('Yuri')
 //Executar a operação
 function manipulaDados(operacao, controle) {
 //Forma Geral - Pegar a árvore
-const contador = controle.querySelector('.controle-contador')
+// const contador = controle.querySelector('.controle-contador')
+//     if (operacao === '-') {
+//         contador.value = parseInt(contador.value) - 1;
+//     } else if (operacao === '+'){ //Coloquei o 'else if' em vez do 'else' para ser mais coonciso
+//         contador.value = parseInt(contador.value) + 1;
+//     }
+
+//Forma Geral - Pegar a árvore
+const contador = controle.querySelector('[data-contador]') //Não prciso colocar valor na no data nesse caso
     if (operacao === '-') {
         contador.value = parseInt(contador.value) - 1;
     } else if (operacao === '+'){ //Coloquei o 'else if' em vez do 'else' para ser mais coonciso
@@ -66,16 +74,31 @@ const contador = controle.querySelector('.controle-contador')
 //         peca.value = parseInt(peca.value) + 1;
 //     }
 
-//-Arrays
-//Pegando todos
-const controle = document.querySelectorAll('.controle-ajuste')
+//
+//2--Pegando todos pela classe
+// const controle = document.querySelectorAll('.controle-ajuste')
+
+//Pegar a operação v2
+// controle.forEach((elemento) => {
+//     elemento.addEventListener('click', (evento) => { //Chamando uma faunção anômima, por padrão já passa dos eventos
+//         //-Pegar o ID do elemento
+//         //console.log(evento.target.id) //Quando é input, value. Texto,textContent
+//         manipulaDados(evento.target.textContent, evento.target.parentNode) //Quando é input, value. Texto,textContent
+        
+//         console.log(evento.target.textContent) //Quando é input, value. Texto,textContent
+//         console.log(evento.target.parentNode) //Saber o elemento pai
+//     })
+// })
+
+//3--Pegando todosMétodo usando data atributtes
+const controle = document.querySelectorAll('[data-controle]');//Substitui a necessidade de procurar pelo 'textContent'. Agora busca pelo dataSet.controle
 
 //Pegar a operação v2
 controle.forEach((elemento) => {
     elemento.addEventListener('click', (evento) => { //Chamando uma faunção anômima, por padrão já passa dos eventos
         //-Pegar o ID do elemento
         //console.log(evento.target.id) //Quando é input, value. Texto,textContent
-        manipulaDados(evento.target.textContent, evento.target.parentNode) //Quando é input, value. Texto,textContent
+        manipulaDados(evento.target.dataset.controle, evento.target.parentNode) //Quando é input, value. Texto,textContent
         
         console.log(evento.target.textContent) //Quando é input, value. Texto,textContent
         console.log(evento.target.parentNode) //Saber o elemento pai
