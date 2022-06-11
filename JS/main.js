@@ -4,8 +4,13 @@
 
 //___________CHAMADAS________________
 const robotron = document.querySelector('#robotron')
-const subtrair = document.querySelector('#subtrair')
-const somar = document.querySelector('#somar')
+// const subtrair = document.querySelector('#subtrair')
+// const somar = document.querySelector('#somar')
+
+//Forma Especifica
+//const braco = document.querySelector('#braco')
+
+//Forma Geral - Pegar a árvore
 const braco = document.querySelector('#braco')
 
 
@@ -45,24 +50,35 @@ dizOi('Yuri')
 // subtrair.addEventListener('click', () => {manipulaDados('subtrair')});
 
 //Executar a operação
-function manipulaDados(operacao) {
+function manipulaDados(operacao, controle) {
+//Forma Geral - Pegar a árvore
+const contador = controle.querySelector('.controle-contador')
     if (operacao === '-') {
-        braco.value = parseInt(braco.value) - 1;
+        contador.value = parseInt(contador.value) - 1;
     } else if (operacao === '+'){ //Coloquei o 'else if' em vez do 'else' para ser mais coonciso
-        braco.value = parseInt(braco.value) + 1;
+        contador.value = parseInt(contador.value) + 1;
     }
 }
+// const peca = document.querySelector('#peca')
+//     if (operacao === '-') {
+//         peca.value = parseInt(peca.value) - 1;
+//     } else if (operacao === '+'){ //Coloquei o 'else if' em vez do 'else' para ser mais coonciso
+//         peca.value = parseInt(peca.value) + 1;
+//     }
 
 //-Arrays
 //Pegando todos
 const controle = document.querySelectorAll('.controle-ajuste')
+
 //Pegar a operação v2
 controle.forEach((elemento) => {
     elemento.addEventListener('click', (evento) => { //Chamando uma faunção anômima, por padrão já passa dos eventos
         //-Pegar o ID do elemento
         //console.log(evento.target.id) //Quando é input, value. Texto,textContent
-        manipulaDados(evento.target.textContent) //Quando é input, value. Texto,textContent
+        manipulaDados(evento.target.textContent, evento.target.parentNode) //Quando é input, value. Texto,textContent
+        
         console.log(evento.target.textContent) //Quando é input, value. Texto,textContent
+        console.log(evento.target.parentNode) //Saber o elemento pai
     })
 })
 
