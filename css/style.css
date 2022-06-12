@@ -35,14 +35,31 @@ main {
     margin: 0;
     flex-basis: 40%;
     position: relative;
-    visibility: hidden;
+    visibility: visible;
+}
+
+.robotron-grupo {
+    display: flex;
+    flex-direction: column;
+}
+
+.botao{
+    border-radius: 5px;
+    background-color: #cfcfcf;
+    margin: 0 auto;
+    position: relative;
+    top: 35rem;
+    height: 2.5botaorem;
+    width: 7rem;
+    cursor: pointer;
+    font-size: 1.7rem;
 }
 
 .robo {
-    height: 110%;
+    height: 80%;
     z-index: 1;
     position: absolute;
-    left: -20%;
+    /* left: -20%; */
     top: -5%;
 }
 
