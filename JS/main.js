@@ -90,8 +90,13 @@ const contador = controle.querySelector('[data-contador]') //Não prciso colocar
 //     })
 // })
 
+
+
+
 //3--Pegando todosMétodo usando data atributtes
 const controle = document.querySelectorAll('[data-controle]');//Substitui a necessidade de procurar pelo 'textContent'. Agora busca pelo dataSet.controle
+const estatistica = document.querySelectorAll('[data-estatistica]');//Substitui a necessidade de procurar pelo 'textContent'. Agora busca pelo dataSet.controle
+console.log(estatistica)
 
 //Pegar a operação v2
 controle.forEach((elemento) => {
@@ -99,11 +104,55 @@ controle.forEach((elemento) => {
         //-Pegar o ID do elemento
         //console.log(evento.target.id) //Quando é input, value. Texto,textContent
         manipulaDados(evento.target.dataset.controle, evento.target.parentNode) //Quando é input, value. Texto,textContent
-        
-        console.log(evento.target.textContent) //Quando é input, value. Texto,textContent
-        console.log(evento.target.parentNode) //Saber o elemento pai
+        atualizaEstatisticas(evento.target.dataset.peca)//Manda o tipo de peça
+
+        // console.log(evento.target.textContent) //Quando é input, value. Texto,textContent
+        // console.log(evento.target.parentNode) //Saber o elemento pai
     })
 })
 
+const pecas = {
+    "bracos": {
+        "forca": 29,
+        "poder": 35,
+        "energia": -21,
+        "velocidade": -5
+    },
+  
+    "blindagem": {
+        "forca": 41,
+        "poder": 20,
+        "energia": 0,
+        "velocidade": -20
+    },
+    "nucleos":{
+        "forca": 0,
+        "poder": 7,
+        "energia": 48,
+        "velocidade": -24
+    },
+    "pernas":{
+        "forca": 27,
+        "poder": 21,
+        "energia": -32,
+        "velocidade": 42
+    },
+    "foguetes":{
+        "forca": 0,
+        "poder": 28,
+        "energia": 0,
+        "velocidade": -2
+    }
+  }
 
+function atualizaEstatisticas(peca) {
+    //console.log(pecas[peca]) //Pega a peça, e busca o objeto [] com o nome dela dentro do objeto 'pecas'
+    
+    estatistica.forEach((elemento) => {
+        console.log(elemento.dataset.estatistica)
+        console.log(elemento.textContent)
+        
+        elemento.textContent = parseInt(elemento.textContent) + pecas[peca][elemento.dataset.estatistica]
 
+    })
+}
